@@ -58,32 +58,28 @@ class PlayerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $player = Player::findOrFail($id);
+        return view('welcome', ['player'=> $player]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, player $player)
+    public function update(Request $request, $id)
     {
-
-        $validadedData = $request->validade(([
-            'name'=> $request->name,
-
-            'email'=> $request->email
-        ]));
-        $player->update($validadedData);
-        return response()->json($player,200);
+        $player = Player::find($id);
+        $player->update($request->all());
+        return redirect('/')->with('msg', 'Jogador atualizado com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(player $player)
+    public function delete(player $player)
     {
         $player->delete();
-        return response()->json([null],200);
+        return redirect('/')->with('msg','Usuario excluido');
     }
 }

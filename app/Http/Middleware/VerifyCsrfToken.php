@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        // Adicione a rota de atualização aqui
+        '/players/*',
     ];
 }

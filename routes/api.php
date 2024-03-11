@@ -19,8 +19,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-route::get('/players', [PlayerController::class,'index']);
-route::post('/players', [PlayerController::class,'store']);
-route::get('/players/{player}', [PlayerController::class,'show']);
-route::put('/players/{player}', [PlayerController::class,'update']);
-route::delete('/players/{player}', [PlayerController::class,'delete']);

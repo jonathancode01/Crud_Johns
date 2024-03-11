@@ -9,4 +9,6 @@ class Player extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'email'];
+
+    protected $guarded = [];
 }
