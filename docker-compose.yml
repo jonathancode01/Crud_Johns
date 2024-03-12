@@ -33,6 +33,25 @@ services:
     networks:
       - docker-laravel
 
+  minio:
+        image: minio/minio
+        container_name: minio
+        command: server /data --console-address ":9701"
+        restart: always
+        environment:
+            - MINIO_ROOT_USER=minioadmin
+            - MINIO_ROOT_PASSWORD=minioadmin
+        volumes:
+            - ./minio_data:/data
+        ports:
+            - 9700:9700
+            - 9701:9701
+        networks:
+            docker-laravel:
+#              ipv4_address: 172.16.238.10
+#            - docker-laravel
+#                ipv4_address: 192.168.1.10
+
   pgsql:
     image: postgres:12.17
     container_name: pgsql
@@ -69,7 +88,7 @@ services:
       - redis
     networks:
       - docker-laravel
-      
+
 networks:
   docker-laravel:
     driver: bridge
