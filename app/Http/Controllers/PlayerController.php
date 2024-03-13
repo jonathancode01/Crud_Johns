@@ -12,12 +12,13 @@ class PlayerController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
-    $players = Player::all();
-    // dd($players);
-    // serve para debugar minha variavel (qualquer coisa)
-    return view("welcome", compact("players"));
-}
+    {
+        $players = Player::all();
+        // dd($players);
+        // serve para debugar minha variavel (qualquer coisa)
+        return view("welcome", compact("players"));
+    }
+
 
 
     /**
